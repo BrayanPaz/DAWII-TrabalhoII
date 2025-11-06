@@ -1,0 +1,60 @@
+<%-include('.. /cabecalho.ejs')%>
+    <h1>Jogos</h1>
+    <div>
+        <form action="" method="post">
+            <input type="text" name="filtro" placeholder="Filtrar por nome">
+            <button type="submit">Pesquisar</button>
+        </form>
+    </div>
+    <table>
+        <tr>
+            <td>Nome</td>
+            <td>Gêneros</td>
+            <td>Preços</td>
+            <td>Descrição</td>
+            <td>Memória RAM Mínima</td>
+            <td>Armazenamento</td>
+            <td>Distribuidora</td>
+            <td>Desenvolvedora</td>
+            <td>Data de Lançamento</td>
+            <td>Poster</td>
+            <td>Ações</td>
+        </tr>
+        <%for(const{id, nome, genero, preco, descricao, minRam, armazenamento, distribuidora, desenvolvedora, dataDeLancamento} of Jogos){%>
+            <tr>
+                <td>
+                    <%=nome%>
+                </td>
+                <td>
+                    <%=genero%>
+                </td>
+                <td>
+                    <%=preco%>
+                </td>
+                <td>
+                    <%=descricao%>
+                </td>
+                <td>
+                    <%=minRam%>
+                </td>
+                <td>
+                    <%=armazenamento%>
+                </td>
+                <td>
+                    <%=distribuidora%>
+                </td>
+                <td>
+                    <%=desenvolvedora%>
+                </td>
+                <td>
+                    <%=dataDeLancamento%>
+                </td>
+                <td><img src="<%=Jogo.poster%>" width="150" height="150"></td>
+                <td>
+                    <a href="/jogo/edit/<%=id%>">Editar</a>
+                    <a href="/jogo/delete/<%=id%>">Excluir</a>
+                </td>
+            </tr>
+            <%}%>
+    </table>
+    <%-include('.. /rodape.ejs')%>
