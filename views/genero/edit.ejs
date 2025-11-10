@@ -1,0 +1,13 @@
+<%-include('../cabecalho.ejs')%>
+<h1>Editar Gênero</h1>
+<div>
+    <form method="post" enctype="multipart/form-data">
+        <input type="hidden" name="id" value="<%=Genero.id%>" required readonly>
+        <br>
+        <label>Nome:</label>
+        <input type="text" name="nome" value="<%=Genero.nome%>" required>
+        <br>
+        <button type="submit">Salvar</button>
+    </form>
+</div>
+<%-include('../rodape.ejs')%>
