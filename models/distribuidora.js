@@ -1,8 +1,16 @@
 import conexao from '../config/conexao.js'
 
-const Aluno = conexao.Schema({
+const Distribuidora = conexao.Schema({
     nome: {type:String, required:true},
-    matricula:{type:String, required:true}
+    descricao:{type:String, required:true},
+    website:{type:String, required:true},
+    paisDeOrigem:{type:String, required:true},
+    dataDeFundacao:{type:Date, required:true},
+    logo:{type:Buffer, required:false,
+    get: (valor) => {
+           if (!valor) return null;
+             return `data:image/png;base64,${valor.toString('base64')}`;
+    }}
 })
 
-export default conexao.model('Aluno',Aluno)
+export default conexao.model('Distribuidora',Distribuidora)

@@ -1,44 +1,56 @@
-import Aluno from '../models/aluno.js';
+import Jogo from '../models/jogo.js';
 
-export default class AlunoController{
-    constructor(caminhoBase='aluno/'){
+export default class JogoController{
+    constructor(caminhoBase='jogo/'){
         this.caminhoBase = caminhoBase
         this.openAdd = async (req,res)=>{
             res.render(this.caminhoBase+'add')
         }
         this.add = async(req, res)=>{
-            //cria aluno
-            await Aluno.create({
+            //cria jogo
+            await Jogo.create({
                 nome: req.body.nome,
-                matricula: req.body.matricula,
+                gêneros: req.body.gêneros,
+                descrição: req.body.descrição,
+                desenvolvedora: req.body.desenvolvedora,
+                dataLançamento: req.body.dataLançamento,
+                preço: req.body.preço,
+                plataforma: req.body.plataforma,
+                cartaz: req.file.buffer,
             })
             res.redirect('/'+this.caminhoBase+'add')
         }
         this.list = async (req, res) => {
-            const resultado = await Aluno.find({})
-            res.render(this.caminhoBase +'list', {Alunos: resultado})
+            const resultado = await Jogo.find({})
+            res.render(this.caminhoBase +'list', {Jogos: resultado})
         }
         this.openEdit = async (req, res) => {
-            const aluno = await Aluno.findById(req.params.id)
-            res.render(this.caminhoBase +'edit', {Aluno: aluno})
+            const jogo = await Jogo.findById(req.params.id)
+            res.render(this.caminhoBase +'edit', {Jogo: jogo})
         }
         this.edit = async (req, res) => {
-            await Aluno.findByIdAndUpdate(req.params.id, {
+            await Jogo.findByIdAndUpdate(req.params.id, {
                 nome: req.body.nome,
-                matricula: req.body.matricula
+                gêneros: req.body.gêneros,
+                descrição: req.body.descrição,
+                desenvolvedora: req.body.desenvolvedora,
+                dataLançamento: req.body.dataLançamento,
+                preço: req.body.preço,
+                plataforma: req.body.plataforma,
+                cartaz: req.body.cartaz,
             })
             res.redirect('/'+this.caminhoBase+'list')
         }
         this.delete = async (req,res) => 
         {
-            await Aluno.findByIdAndDelete(req.params.id)
+            await Jogo.findByIdAndDelete(req.params.id)
             res.redirect('/'+this.caminhoBase+'list')
         }
         this.find = async(req,res) =>
         {
             const filtro = req.body.filtro
-            const resultado = await Aluno.find({nome: {$regex: filtro, $options: 'i'}})
-            res.render(this.caminhoBase+'list', {Alunos: resultado})
+            const resultado = await Jogo.find({nome: {$regex: filtro, $options: 'i'}})
+            res.render(this.caminhoBase+'list', {Jogos: resultado})
         }
     }
 }

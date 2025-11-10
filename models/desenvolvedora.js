@@ -6,16 +6,11 @@ const Desenvolvedora = conexao.Schema({
     website:{type:String, required:true},
     paisDeOrigem:{type:String, required:true},
     dataDeFundacao:{type:Date, required:true},
-    logo:{type:Buffer, required:true},
+    logo:{type:Buffer, required:false,
+    get: (valor) => {
+           if (!valor) return null;
+             return `data:image/png;base64,${valor.toString('base64')}`;
+    }}
 })
 
 export default conexao.model('Desenvolvedora',Desenvolvedora)
-
-/*Desenvolvedora:
-Nome: String
-Descrição: String
-Website: String
-País De Origem: String
-Data De Fundação: Date
-Logo: Buffer
-*/

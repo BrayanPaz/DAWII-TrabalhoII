@@ -1,0 +1,28 @@
+<%-include('../cabecalho.ejs')%>
+<h1>Editar Desenvolvedora</h1>
+<div>
+    <form method="post" enctype="multipart/form-data">
+        <input type="hidden" name="id" value="<%=Desenvolvedora.id%>" required readonly>
+        <br>
+        <label>Nome:</label>
+        <input type="text" name="nome" value="<%=Desenvolvedora.nome%>" required>
+        <br>
+        <label>Descrição:</label>
+        <input type="text" name="descricao" value="<%=Desenvolvedora.descricao%>" required>
+        <br>
+        <label>Website:</label>
+        <input type="text" name="website" value="<%=Desenvolvedora.website%>" required>
+        <br>
+        <label>País de Origem:</label>
+        <input type="text" name="paisDeOrigem" value="<%=Desenvolvedora.paisDeOrigem%>" required>
+        <br>
+        <label>Data de Fundação:</label>
+        <input type="date" name="dataDeFundacao" value="<%=Desenvolvedora.dataDeFundacao%>" required>
+        <br>
+        <label>Logo:</label>
+        <input type="file" name="logo" accept="image/*" value="<%=Desenvolvedora.logo%>">
+        <br>
+        <button type="submit">Salvar</button>
+    </form>
+</div>
+<%-include('../rodape.ejs')%>

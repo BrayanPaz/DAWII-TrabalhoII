@@ -1,5 +1,5 @@
-<%-include('../cabecalho.ejs')%>
-    <h1>Alunos</h1>
+<%-include('.. /cabecalho.ejs')%>
+    <h1>Distribuidora</h1>
     <div>
         <form action="" method="post">
             <input type="text" name="filtro" placeholder="Filtrar por nome">
@@ -9,30 +9,38 @@
     <table>
         <tr>
             <td>Nome</td>
-            <td>Área</td>
-            <td>Nível</td>
-            <td>Ano de Fundação</td>
+            <td>Descrição</td>
+            <td>Website</td>
+            <td>País de Origem</td>
+            <td>Data de Fundação</td>
+            <td>Logo</td>
             <td>Ações</td>
         </tr>
-        <%for(const{nome, area, nivel, anoFundacao, id} of Cursos){%>
+        <%for(const{id, nome, descricao, website, paisDeOrigem, dataDeFundacao, logo} of Distribuidoras){%>
             <tr>
                 <td>
                     <%=nome%>
                 </td>
                 <td>
-                    <%=area%>
+                    <%=descricao%>
                 </td>
                 <td>
-                    <%=nivel%>
+                    <%=website%>
                 </td>
                 <td>
-                    <%=anoFundacao%>
+                    <%=paisDeOrigem%>
                 </td>
                 <td>
-                    <a href="/curso/edit/<%=id%>">Editar</a>
-                    <a href="/curso/delete/<%=id%>">Excluir</a>
+                    <%=dataDeFundacao%>
+                </td>
+                <td>
+                    <img src="<%=logo%>" width="100" height="100">
+                </td>
+                <td>
+                    <a href="/distribuidora/edit/<%=id%>">Editar</a>
+                    <a href="/distribuidora/delete/<%=id%>">Excluir</a>
                 </td>
             </tr>
-            <%}%>
+        <%}%>
     </table>
-<%-include('../rodape.ejs')%>
+<%-include('.. /rodape.ejs')%>
