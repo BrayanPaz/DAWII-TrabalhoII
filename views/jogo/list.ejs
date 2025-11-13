@@ -1,4 +1,4 @@
-<%-include('.. /cabecalho.ejs')%>
+<%-include('../cabecalho.ejs')%>
     <h1>Jogos</h1>
     <div>
         <form action="" method="post">
@@ -20,13 +20,13 @@
             <td>Poster</td>
             <td>Ações</td>
         </tr>
-        <%for(const{id, nome, genero, preco, descricao, minRam, armazenamento, distribuidora, desenvolvedora, dataDeLancamento} of Jogos){%>
+        <%for(const{id, nome, generos, preco, descricao, minRam, armazenamento, distribuidora, desenvolvedora, dataDeLancamento, poster} of Jogos){%>
             <tr>
                 <td>
                     <%=nome%>
                 </td>
                 <td>
-                    <%=genero%>
+                    <%=generos%>
                 </td>
                 <td>
                     <%=preco%>
@@ -41,15 +41,17 @@
                     <%=armazenamento%>
                 </td>
                 <td>
-                    <%=distribuidora%>
+                    <%=distribuidora.nome%>
                 </td>
                 <td>
-                    <%=desenvolvedora%>
+                    <%=desenvolvedora.nome%>
                 </td>
                 <td>
                     <%=dataDeLancamento%>
                 </td>
-                <td><img src="<%=Jogo.poster%>" width="150" height="150"></td>
+                <td>
+                    <img src="<%=poster%>" width="150" height="150">
+                </td>
                 <td>
                     <a href="/jogo/edit/<%=id%>">Editar</a>
                     <a href="/jogo/delete/<%=id%>">Excluir</a>
@@ -57,4 +59,4 @@
             </tr>
             <%}%>
     </table>
-    <%-include('.. /rodape.ejs')%>
+    <%-include('../rodape.ejs')%>

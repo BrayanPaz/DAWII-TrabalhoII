@@ -1,0 +1,46 @@
+<%-include('../cabecalho.ejs')%>
+    <h1>Desenvolvedoras</h1>
+    <div>
+        <form action="" method="post">
+            <input type="text" name="filtro" placeholder="Filtrar por nome">
+            <button type="submit">Pesquisar</button>
+        </form>
+    </div>
+    <table>
+        <tr>
+            <td>Nome</td>
+            <td>Descrição</td>
+            <td>Website</td>
+            <td>País de Origem</td>
+            <td>Data de Fundação</td>
+            <td>Logo</td>
+            <td>Ações</td>
+        </tr>
+        <%for(const{id, nome, descricao, website, paisDeOrigem, dataDeFundacao, logo} of Desenvolvedoras){%>
+            <tr>
+                <td>
+                    <%=nome%>
+                </td>
+                <td>
+                    <%=descricao%>
+                </td>
+                <td>
+                    <%=website%>
+                </td>
+                <td>
+                    <%=paisDeOrigem%>
+                </td>
+                <td>
+                    <%=dataDeFundacao%>
+                </td>
+                <td>
+                    <img src="<%=logo%>" width="100" height="100">
+                </td>
+                <td>
+                    <a href="/desenvolvedora/edit/<%=id%>">Editar</a>
+                    <a href="/desenvolvedora/delete/<%=id%>">Excluir</a>
+                </td>
+            </tr>
+        <%}%>
+    </table>
+<%-include('../rodape.ejs')%>

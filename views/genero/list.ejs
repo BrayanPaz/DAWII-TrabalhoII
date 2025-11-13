@@ -1,0 +1,26 @@
+<%-include('../cabecalho.ejs')%>
+    <h1>Gêneros</h1>
+    <div>
+        <form action="" method="post">
+            <input type="text" name="filtro" placeholder="Filtrar por nome">
+            <button type="submit">Pesquisar</button>
+        </form>
+    </div>
+    <table>
+        <tr>
+            <td>Nome</td>
+            <td>Ações</td>
+        </tr>
+        <%for(const{id, nome} of Generos){%>
+            <tr>
+                <td>
+                    <%=nome%>
+                </td>
+                <td>
+                    <a href="/distribuidora/edit/<%=id%>">Editar</a>
+                    <a href="/distribuidora/delete/<%=id%>">Excluir</a>
+                </td>
+            </tr>
+        <%}%>
+    </table>
+<%-include('../rodape.ejs')%>
