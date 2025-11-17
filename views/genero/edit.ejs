@@ -1,13 +1,17 @@
 <%-include('../cabecalho.ejs')%>
-<h1>Editar Gênero</h1>
+<h1 class="mb-4">Editar Gênero</h1>
 <div>
-    <form method="post" enctype="multipart/form-data">
+    <form method="post" action="/genero/edit/<%=Genero.id%>">
         <input type="hidden" name="id" value="<%=Genero.id%>" required readonly>
-        <br>
-        <label>Nome:</label>
-        <input type="text" name="nome" value="<%=Genero.nome%>" required>
-        <br>
-        <button type="submit">Salvar</button>
+        
+        <div class="mb-3">
+            <label for="nome" class="form-label">Nome:</label>
+            <input type="text" id="nome" name="nome" class="form-control" value="<%=Genero.nome%>" required>
+        </div>
+        
+        <hr class="my-4">
+        <button type="submit" class="btn btn-primary"><i class="bi bi-floppy-fill"></i> Salvar</button>
+        <a href="/genero/list" class="btn btn-secondary">Cancelar</a>
     </form>
 </div>
 <%-include('../rodape.ejs')%>

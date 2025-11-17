@@ -1,28 +1,43 @@
 <%-include('../cabecalho.ejs')%>
-<h1>Editar Desenvolvedora</h1>
+<h1 class="mb-4">Editar Desenvolvedora</h1>
 <div>
-    <form method="post" enctype="multipart/form-data">
+    <form method="post" enctype="multipart/form-data" action="/desenvolvedora/edit/<%=Desenvolvedora.id%>">
         <input type="hidden" name="id" value="<%=Desenvolvedora.id%>" required readonly>
-        <br>
-        <label>Nome:</label>
-        <input type="text" name="nome" value="<%=Desenvolvedora.nome%>" required>
-        <br>
-        <label>Descrição:</label>
-        <input type="text" name="descricao" value="<%=Desenvolvedora.descricao%>" required>
-        <br>
-        <label>Website:</label>
-        <input type="text" name="website" value="<%=Desenvolvedora.website%>" required>
-        <br>
-        <label>País de Origem:</label>
-        <input type="text" name="paisDeOrigem" value="<%=Desenvolvedora.paisDeOrigem%>" required>
-        <br>
-        <label>Data de Fundação:</label>
-        <input type="date" name="dataDeFundacao" value="<%=Desenvolvedora.dataDeFundacao%>" required>
-        <br>
-        <label>Logo:</label>
-        <input type="file" name="logo" accept="image/*" value="<%=Desenvolvedora.logo%>">
-        <br>
-        <button type="submit">Salvar</button>
+        
+        <div class="mb-3">
+            <label for="nome" class="form-label">Nome:</label>
+            <input type="text" id="nome" name="nome" class="form-control" value="<%=Desenvolvedora.nome%>" required>
+        </div>
+        
+        <div class="mb-3">
+            <label for="descricao" class="form-label">Descrição:</label>
+            <textarea id="descricao" name="descricao" class="form-control" rows="3" required><%=Desenvolvedora.descricao%></textarea>
+        </div>
+
+    <div class="mb-3">
+            <label for="website" class="form-label">Website:</label>
+            <input type="url" id="website" name="website" class="form-control" value="<%=Desenvolvedora.website%>" required>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                <label for="paisDeOrigem" class="form-label">País de Origem:</label>
+                <input type="text" id="paisDeOrigem" name="paisDeOrigem" class="form-control" value="<%=Desenvolvedora.paisDeOrigem%>" required>
+            </div>
+            <div class="col-md-6 mb-3">
+                <label for="dataDeFundacao" class="form-label">Data de Fundação:</label>
+                <input type="date" id="dataDeFundacao" name="dataDeFundacao" class="form-control" value="<%=Desenvolvedora.dataDeFundacao.toISOString().split('T')[0]%>" required>
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="logo" class="form-label">Logo (deixe em branco para manter a atual):</label>
+            <input type="file" id="logo" name="logo" class="form-control" accept="image/*">
+        </div>
+        
+<hr class="my-4">
+        <button type="submit" class="btn btn-primary"><i class="bi bi-floppy-fill"></i> Salvar</button>
+        <a href="/desenvolvedora/list" class="btn btn-secondary">Cancelar</a>
     </form>
 </div>
 <%-include('../rodape.ejs')%>

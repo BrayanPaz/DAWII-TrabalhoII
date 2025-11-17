@@ -1,26 +1,42 @@
 <%-include('../cabecalho.ejs')%>
-<h1>Adicionar Distribuidora</h1>
+<h1 class="mb-4">Adicionar Distribuidora</h1>
 <div>
-    <form method="post" enctype="multipart/form-data">
-        <label>Nome:</label>
-        <input type="text" name="nome" required>
-        <br>
-        <label>Descrição:</label>
-        <textarea name="descricao" required></textarea>
-        <br>
-        <label>Website:</label>
-        <input type="text" name="website" required>
-        <br>
-        <label>País de Origem:</label>
-        <input type="text" name="paisDeOrigem" required>
-        <br>
-        <label>Data de Fundação:</label>
-        <input type="date" name="dataDeFundacao" required>
-        <br>
-        <label>Logo:</label>
-        <input type="file" name="logo" accept="image/*" required>
-        <br>
-        <button type="submit">Adicionar</button>
+    <form method="post" enctype="multipart/form-data" action="/distribuidora/add">
+        
+        <div class="mb-3">
+            <label for="nome" class="form-label">Nome:</label>
+            <input type="text" id="nome" name="nome" class="form-control" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="descricao" class="form-label">Descrição:</label>
+            <textarea id="descricao" name="descricao" class="form-control" rows="3" required></textarea>
+        </div>
+
+        <div class="mb-3">
+            <label for="website" class="form-label">Website:</label>
+            <input type="url" id="website" name="website" class="form-control" placeholder="https://..." required>
+        </div>
+
+        <div class="row">
+        <div class="col-md-6 mb-3">
+                <label for="paisDeOrigem" class="form-label">País de Origem:</label>
+                <input type="text" id="paisDeOrigem" name="paisDeOrigem" class="form-control" required>
+            </div>
+            <div class="col-md-6 mb-3">
+                <label for="dataDeFundacao" class="form-label">Data de Fundação:</label>
+                <input type="date" id="dataDeFundacao" name="dataDeFundacao" class="form-control" required>
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="logo" class="form-label">Logo:</label>
+            <input type="file" id="logo" name="logo" class="form-control" accept="image/*" required>
+        </div>
+
+        <hr class="my-4">
+        <button type="submit" class="btn btn-success"><i class="bi bi-plus-circle-fill"></i> Adicionar</button>
+        <a href="/distribuidora/list" class="btn btn-secondary">Cancelar</a>
     </form>
 </div>
 <%-include('../rodape.ejs')%>

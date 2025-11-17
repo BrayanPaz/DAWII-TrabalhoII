@@ -34,7 +34,10 @@ export default class JogoController{
         }
         this.openEdit = async (req, res) => {
             const jogo = await Jogo.findById(req.params.id)
-            res.render(this.caminhoBase +'edit', {Jogo: jogo})
+            const generos = await genero.find({})
+            const distribuidoras = await distribuidora.find({})
+            const desenvolvedoras = await desenvolvedora.find({})
+            res.render(this.caminhoBase +'edit', {Jogo: jogo, generos: generos, distribuidoras: distribuidoras, desenvolvedoras: desenvolvedoras})
         }
         this.edit = async (req, res) => {
             await Jogo.findByIdAndUpdate(req.params.id, {

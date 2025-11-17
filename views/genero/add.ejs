@@ -1,11 +1,14 @@
 <%-include('../cabecalho.ejs')%>
-    <h1>Adicionar Gênero</h1>
+    <h1 class="mb-4">Adicionar Gênero</h1>
     <div>
-        <form method="post">
-            <label>Nome:</label>
-            <input type="text" name="nome" required>
+        <form method="post" action="/genero/add">
+            <div class="mb-3">
+                <label for="nome" class="form-label">Nome:</label>
+                <input type="text" id="nome" name="nome" class="form-control" required>
+            </div>
             <br>
-            <button type="submit">Adicionar</button>
+            <button type="submit" class="btn btn-success"><i class="bi bi-plus-circle-fill"></i> Adicionar</button>
+            <a href="/genero/list" class="btn btn-secondary">Cancelar</a>
         </form>
     </div>
     <%-include('../rodape.ejs')%>
