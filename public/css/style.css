@@ -14,3 +14,10 @@ body {
   border-radius: 8px;
   /* Bordas arredondadas */
 }
+
+.table-description {
+  max-width: 300px; /* Define uma largura máxima para a célula */
+  white-space: nowrap; /* Impede que o texto quebre a linha */
+  overflow: hidden; /* Esconde o texto que "vazou" */
+  text-overflow: ellipsis; /* Adiciona o "..." no final */
+}

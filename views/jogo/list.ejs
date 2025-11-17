@@ -30,7 +30,9 @@
                     <tr>
                     <td><%=nome%></td>
                         <td><%=generos.join(', ')%></td>                     <td>R$ <%=preco.toFixed(2)%></td>
-                    <td><%=descricao%></td>
+                    <td class="table-description" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-placement="top"data-bs-content="<%=descricao%>">
+                        <%=descricao%>
+                    </td>
                         <td><%=minRam%></td>
                         <td><%=armazenamento%></td>
                     <td><%=distribuidora.nome%></td>
