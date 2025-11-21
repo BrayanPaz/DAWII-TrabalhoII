@@ -6,7 +6,7 @@ import multer from 'multer';
 const storage = multer.memoryStorage();
 const upload = multer({ storage });
 
-const caminhobase = 'distribuidora/'
+const caminhobase = 'adm/distribuidora/'
 
 router.get(`/${caminhobase}add`, controller.openAdd)
 router.post(`/${caminhobase}add`, upload.single('logo'), controller.add)

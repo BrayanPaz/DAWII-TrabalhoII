@@ -6,7 +6,7 @@ import multer from 'multer';
 const storage = multer.memoryStorage();
 const upload = multer({ storage });
 
-const caminhobase = 'jogo/'
+const caminhobase = 'adm/jogo/'
 
 router.get(`/${caminhobase}add`, controller.openAdd)
 router.post(`/${caminhobase}add`, upload.single('poster'), controller.add)

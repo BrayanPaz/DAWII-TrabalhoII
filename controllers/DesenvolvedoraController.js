@@ -1,7 +1,7 @@
 import Desenvolvedora from '../models/desenvolvedora.js';
 
 export default class DesenvolvedoraController{
-    constructor(caminhoBase='desenvolvedora/'){
+    constructor(caminhoBase='adm/desenvolvedora/'){
         this.caminhoBase = caminhoBase
         this.openAdd = async (req,res)=>{
             res.render(this.caminhoBase+'add')

@@ -1,8 +1,8 @@
 <%-include('../cabecalho.ejs')%>
-    <h1 class="mb-4">Distribuidoras</h1>
+    <h1 class="mb-4">Desenvolvedoras</h1>
 
     <div class="mb-3">
-        <form action="/distribuidora/list" method="post" class="d-flex">
+        <form action="/desenvolvedora/list" method="post" class="d-flex">
             <input type="text" name="filtro" class="form-control me-2" placeholder="Filtrar por nome">
             <button type="submit" class="btn btn-primary"><i class="bi bi-search"></i> Pesquisar</button>
         </form>
@@ -22,7 +22,7 @@
                 </tr>
             </thead>
             <tbody>
-                <%for(const{nome, descricao, website, paisDeOrigem, dataDeFundacao, logo, id} of Distribuidoras){%>
+                <%for(const{id, nome, descricao, website, paisDeOrigem, dataDeFundacao, logo} of Desenvolvedoras){%>
                     <tr>
                         <td>
                             <%=nome%>
@@ -41,10 +41,10 @@
                             <img src="<%=logo%>" class="table-img" alt="Logo de <%=nome%>">
                         </td>
                         <td>
-                            <a href="/distribuidora/edit/<%=id%>" class="btn btn-warning btn-sm mb-1" title="Editar">
+                            <a href="/adm/desenvolvedora/edit/<%=id%>" class="btn btn-warning btn-sm mb-1" title="Editar">
                                 <i class="bi bi-pencil-fill"></i>
                             </a>
-                            <a href="/distribuidora/delete/<%=id%>" class="btn btn-danger btn-sm mb-1" title="Excluir"
+                            <a href="/adm/desenvolvedora/delete/<%=id%>" class="btn btn-danger btn-sm mb-1" title="Excluir"
                                 onclick="return confirm('Tem certeza?');">
                                 <i class="bi bi-trash-fill"></i>
                             </a>

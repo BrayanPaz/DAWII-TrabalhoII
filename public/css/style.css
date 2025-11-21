@@ -21,3 +21,6 @@ body {
   overflow: hidden; /* Esconde o texto que "vazou" */
   text-overflow: ellipsis; /* Adiciona o "..." no final */
 }
+a {
+    text-decoration: none !important;
+}

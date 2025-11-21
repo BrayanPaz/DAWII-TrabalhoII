@@ -4,7 +4,7 @@ import desenvolvedora from '../models/desenvolvedora.js';
 import genero from '../models/genero.js';
 
 export default class JogoController{
-    constructor(caminhoBase='jogo/'){
+    constructor(caminhoBase='adm/jogo/'){
         this.caminhoBase = caminhoBase
         this.openAdd = async (req,res)=>{
             const generos = await genero.find({})

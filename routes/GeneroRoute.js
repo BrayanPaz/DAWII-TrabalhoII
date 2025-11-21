@@ -3,7 +3,7 @@ const router = express.Router()
 import GeneroController from '../controllers/GeneroController.js'
 const controller = new GeneroController()
 
-const caminhobase = 'genero/'
+const caminhobase = 'adm/genero/'
 
 router.get(`/${caminhobase}add`, controller.openAdd)
 router.post(`/${caminhobase}add`, controller.add)

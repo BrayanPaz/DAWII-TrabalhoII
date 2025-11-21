@@ -4,9 +4,9 @@
 
 
 export async function home(req,res){
-     res.render('index')
+     res.render('adm/index')
 }
 
 export async function formulario(req, res) {
-    res.render('index');
+    res.render('adm/index');
 }

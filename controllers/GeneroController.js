@@ -1,7 +1,7 @@
 import Genero from '../models/genero.js';
 
 export default class GeneroController{
-    constructor(caminhoBase='genero/'){
+    constructor(caminhoBase='adm/genero/'){
         this.caminhoBase = caminhoBase
         this.openAdd = async (req,res)=>{
             res.render(this.caminhoBase+'add')

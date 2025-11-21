@@ -1,7 +1,7 @@
 import Distribuidora from '../models/distribuidora.js';
 
 export default class DistribuidoraController{
-    constructor(caminhoBase='distribuidora/'){
+    constructor(caminhoBase='adm/distribuidora/'){
         this.caminhoBase = caminhoBase
         this.openAdd = async (req,res)=>{
             res.render(this.caminhoBase+'add')
