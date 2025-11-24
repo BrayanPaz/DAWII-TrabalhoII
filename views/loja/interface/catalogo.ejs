@@ -1,0 +1,96 @@
+<%- include('../cabecalho.ejs') %>
+
+<div class="row justify-content-center">
+    <div class="col-12 text-center mb-5">
+        <h1 class="display-4 fw-bold">Catálogo</h1>
+        <p class="lead text-light">Explore e descubra novos mundos.</p>
+    </div>
+</div>
+
+<div class="row">
+    <% if(jogos.length === 0) { %>
+        <div class="text-center text-muted">O catálogo está vazio no momento.</div>
+    <% } %>
+
+    <% for(const jogo of jogos) { %>
+
+        <% 
+           let estado = "disponivel";
+           if (biblioteca.includes(jogo.id)) estado = "obtido";
+           else if (carrinho.includes(jogo.id)) estado = "carrinho";
+        %>
+
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
+            <div class="card game-card h-100">
+
+                <% if(jogo.poster) { %>
+                    <img src="<%= jogo.poster %>" class="card-img-top" alt="<%= jogo.nome %>">
+                <% } else { %>
+                    <div class="card-img-top d-flex align-items-center justify-content-center bg-secondary" style="height: 250px;">
+                        <i class="bi bi-image fs-1"></i>
+                    </div>
+                <% } %>
+
+                <div class="card-body">
+                    <h5 class="card-title text-truncate"><%= jogo.nome %></h5>
+                    <p class="card-price">R$ <%= jogo.preco.toFixed(2).replace('.', ',') %></p>
+                    
+
+                    <button type="button" class="btn btn-app-action mt-auto" data-bs-toggle="modal" data-bs-target="#modalJogo<%= jogo._id %>">
+                        Ver Detalhes
+                    </button>
+
+
+                    <div class="mt-2 text-center">
+                        <% if(estado === 'obtido') { %>
+                            <span class="badge bg-success"><i class="bi bi-check-circle"></i> Já Obtido</span>
+                        <% } else if(estado === 'carrinho') { %>
+                            <span class="badge bg-warning text-dark"><i class="bi bi-cart-check"></i> No Carrinho</span>
+                        <% } %>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="modalJogo<%= jogo._id %>" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title"><%= jogo.nome %></h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body text-center">
+                        <% if(jogo.poster) { %>
+                            <img src="<%= jogo.poster %>" class="img-fluid rounded mb-3" style="max-height: 250px;" alt="<%= jogo.nome %>">
+                        <% } %>
+                        <p class="text-start"><%= jogo.descricao %></p>
+                        <hr>
+                        <div class="text-start small text-muted">
+                            <p class="mb-1"><strong>Desenvolvedora:</strong> <%= jogo.desenvolvedora.nome %></p>
+                            <p class="mb-1"><strong>Gêneros:</strong> <%= jogo.generos.join(', ') %></p>
+                        </div>
+                        <h3 class="mt-3">R$ <%= jogo.preco.toFixed(2).replace('.', ',') %></h3>
+                    </div>
+                    <div class="modal-footer justify-content-center">
+
+                        <% if(estado === 'obtido') { %>
+                            <button class="btn btn-secondary w-100" disabled>
+                                Item na Biblioteca
+                            </button>
+                        <% } else if(estado === 'carrinho') { %>
+                            <a href="/loja/carrinho" class="btn btn-warning w-100">
+                                Ir para o Carrinho
+                            </a>
+                        <% } else { %>
+                            <a href="/loja/adicionar/<%= jogo._id %>" class="btn btn-success w-100">
+                                <i class="bi bi-cart-plus"></i> Adicionar ao Carrinho
+                            </a>
+                        <% } %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <% } %>
+</div>
+
+<%- include('../rodape.ejs') %>
